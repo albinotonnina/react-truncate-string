@@ -5,13 +5,8 @@ import commonJS from 'rollup-plugin-commonjs'
 import pkg from './package.json'
 
 export default {
-  input: 'src/index.js',
+  input: 'src/truncateString.js',
   output: [
-    {
-      name: pkg.module,
-      file: pkg.module,
-      format: 'es'
-    },
     {
       name: pkg.main,
       file: pkg.main,

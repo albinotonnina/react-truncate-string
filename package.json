@@ -2,17 +2,13 @@
   "name": "react-truncate-string",
   "version": "0.0.1",
   "description": "",
-  "main": "dist/truncateText.js",
-  "module": "dist/truncateText.esm.js",
-  "source": "src/index.js",
+  "main": "dist/truncateString.js",
+  "module": "src/truncateString.js",
+  "source": "src/truncateString.js",
   "size-limit": [
     {
-      "limit": "8 KB",
-      "path": "dist/truncateText.js"
-    },
-    {
-      "limit": "8 KB",
-      "path": "dist/truncateText.esm.js"
+      "limit": "5 KB",
+      "path": "dist/truncateString.js"
     }
   ],
   "scripts": {
@@ -27,7 +23,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/albinotonnina/react-truncate-text.git"
+    "url": "https://github.com/albinotonnina/react-truncate-string.git"
   },
   "keywords": [
     "react",
@@ -42,8 +38,7 @@
     "react-dom": ">=0.13.x <=16.x.x"
   },
   "dependencies": {
-    "lodash.debounce": "^4.0.8",
-    "measure-text": "^0.0.4"
+    "throttle-debounce": "^2.0.1"
   },
   "files": [
     "dist",
