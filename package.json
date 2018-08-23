@@ -1,0 +1,88 @@
+{
+  "name": "react-truncate-string",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/truncateText.js",
+  "module": "dist/truncateText.esm.js",
+  "source": "src/index.js",
+  "size-limit": [
+    {
+      "limit": "8 KB",
+      "path": "dist/truncateText.js"
+    },
+    {
+      "limit": "8 KB",
+      "path": "dist/truncateText.esm.js"
+    }
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "size": "size-limit",
+    "prepare": "npm run build",
+    "test": "jest",
+    "test:updateSnapshots": "jest --updateSnapshot"
+  },
+  "author": "Albino Tonnina <albinotonnina@gmail.com> (http://www.albinotonnina.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/albinotonnina/react-truncate-text.git"
+  },
+  "keywords": [
+    "react",
+    "react-dom",
+    "ui",
+    "react-component",
+    "stack",
+    "truncation"
+  ],
+  "peerDependencies": {
+    "react": ">=0.13.x <=16.x.x",
+    "react-dom": ">=0.13.x <=16.x.x"
+  },
+  "dependencies": {
+    "lodash.debounce": "^4.0.8",
+    "measure-text": "^0.0.4"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.6",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.3",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.7.0",
+    "jest": "^22.4.3",
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "rollup": "^0.57.0",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-node-resolve": "^3.2.0",
+    "rollup-plugin-uglify": "^3.0.0",
+    "size-limit": "^0.17.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "html"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/test.setup.js"
+  }
+}
