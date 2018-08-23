@@ -1,5 +1,7 @@
 # React Truncate String
 
+[![Build Status](https://travis-ci.org/albinotonnina/react-truncate-string.svg?branch=master)](https://travis-ci.org/albinotonnina/react-truncate-string)
+
 > TBD
 
 ## Features
@@ -21,20 +23,20 @@ yarn add react-truncate-string
 
 ## Usage
 
+### Truncate in the middle of the string
+
 ```jsx
+import Truncate from 'react-truncate-string'
+
+...
+
+render(){
+
+    return  <TruncateString text="your long string" />
+}
 ```
 
 ## Demos
-
-Basic demo on codesandbox
-
-https://codesandbox.io/s/r4v7onrpop
-
-React-create-app Demo
-
-https://albinotonnina.github.io/demo-magic-hat
-
-https://github.com/albinotonnina/demo-magic-hat
 
 ## Maintainers
 
