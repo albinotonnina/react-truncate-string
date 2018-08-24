@@ -2,7 +2,7 @@
   "name": "react-truncate-string-page",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://albinotonnina.github.io/react-truncate-string",
+  "homepage": "https://albinotonnina.github.io/react-truncate-string",
   "dependencies": {
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
