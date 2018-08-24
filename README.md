@@ -2,9 +2,13 @@
 
 [![Build Status](https://travis-ci.org/albinotonnina/react-truncate-string.svg?branch=master)](https://travis-ci.org/albinotonnina/react-truncate-string)
 
-> TBD
+> Truncate strings like butter.
 
 ## Features
+
+🚀 ultra-blazingly-fast
+
+🌈 ultra-light: 1.76 KB
 
 ## Table of Contents
 
