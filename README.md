@@ -1,5 +1,9 @@
 # React Truncate String
 
+<p align="center">
+    <img src="https://img.ziggi.org/5Rjsznl9.png" />
+</p>
+
 [![Build Status](https://travis-ci.org/albinotonnina/react-truncate-string.svg?branch=master)](https://travis-ci.org/albinotonnina/react-truncate-string)
 
 > Truncate strings like butter.
