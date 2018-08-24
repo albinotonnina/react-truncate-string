@@ -10,6 +10,8 @@
 
 ## Features
 
+### It truncates long long long long...long long strings in the middle!
+
 🚀 ultra-blazingly-fast
 
 🌈 ultra-light: 1.76 KB
@@ -47,6 +49,8 @@ render(){
 ## Demos
 
 https://albinotonnina.github.io/react-truncate-string
+
+https://codesandbox.io/s/xvv9r5ozo
 
 ## Maintainers
 
