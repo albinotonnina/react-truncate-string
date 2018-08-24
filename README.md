@@ -46,6 +46,8 @@ render(){
 
 ## Demos
 
+https://albinotonnina.github.io/react-truncate-string
+
 ## Maintainers
 
 [@albinotonnina](https://github.com/albinotonnina)
