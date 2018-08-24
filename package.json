@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/truncateString.js",
-  "module": "src/truncateString.js",
   "source": "src/truncateString.js",
   "size-limit": [
     {
