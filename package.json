@@ -1,100 +1,22 @@
 {
-  "name": "react-truncate-string",
-  "version": "1.0.1",
-  "description": "",
-  "main": "dist/truncateString.js",
-  "source": "src/truncateString.js",
-  "size-limit": [
-    {
-      "limit": "5 KB",
-      "path": "dist/truncateString.js"
-    }
-  ],
-  "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "size": "size-limit",
-    "prepare": "npm run build",
-    "test": "jest",
-    "test:updateSnapshots": "jest --updateSnapshot"
-  },
-  "author": "Albino Tonnina <albinotonnina@gmail.com> (http://www.albinotonnina.com)",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/albinotonnina/react-truncate-string.git"
-  },
-  "keywords": [
-    "react",
-    "react-dom",
-    "ui",
-    "react-component",
-    "stack",
-    "truncation"
-  ],
-  "peerDependencies": {
-    "react": ">=0.13.x <=16.x.x",
-    "react-dom": ">=0.13.x <=16.x.x"
-  },
+  "name": "react-truncate-string-page",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "http://albinotonnina.github.io/react-truncate-string",
   "dependencies": {
-    "throttle-debounce": "^2.0.1"
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-scripts": "1.1.5"
   },
-  "files": [
-    "dist",
-    "src"
-  ],
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.2.6",
-    "babel-loader": "^7.1.5",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "^4.19.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.0",
-    "eslint-plugin-react": "^7.7.0",
-    "html-webpack-plugin": "^3.2.0",
-    "jest": "^22.4.3",
-    "jest-enzyme": "^6.0.3",
-    "jest-puppeteer": "^3.3.1",
-    "jest-puppeteer-react": "^1.4.0",
-    "prop-types": "^15.6.1",
-    "puppeteer": "^1.7.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-testing-library": "^5.0.0",
-    "rollup": "^0.57.0",
-    "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-commonjs": "^9.1.0",
-    "rollup-plugin-node-resolve": "^3.2.0",
-    "rollup-plugin-uglify": "^3.0.0",
-    "size-limit": "^0.17.0",
-    "webpack": "^4.17.1"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test-lib/mocks/fileMock.js"
-    },
-    "setupTestFrameworkScriptFile": "<rootDir>/test-lib/setup/setup-test-framework.js",
-    "setupFiles": [
-      "<rootDir>/test-lib/setup/enzyme.js"
-    ],
-    "preset": "jest-puppeteer-react",
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true,
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "./src/__tests__/",
-      "./test-lib/"
-    ],
-    "transform": {
-      "^.+\\.js?$": "babel-jest"
-    }
+    "gh-pages": "^1.2.0"
   }
 }
