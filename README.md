@@ -23,6 +23,7 @@
 - [Demos](#demos)
 - [Maintainers](#maintainers)
 - [Contribute](#contribute)
+- [TODO](#todo)
 - [License](#license)
 
 ## Install
@@ -59,6 +60,12 @@ https://codesandbox.io/s/xvv9r5ozo
 ## Contribute
 
 PRs accepted.
+
+## TODO
+
+- truncate by words?
+- min start and end characters option?
+- change debounce time with option?
 
 ## License
 
