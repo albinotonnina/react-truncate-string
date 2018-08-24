@@ -5643,6 +5643,12 @@ react-scripts@1.1.5:
   optionalDependencies:
     fsevents "^1.1.3"
 
+react-truncate-string@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-truncate-string/-/react-truncate-string-1.0.1.tgz#41158373f9126cb4985326abebb2d7081cc32263"
+  dependencies:
+    throttle-debounce "^2.0.1"
+
 react@^16.4.2:
   version "16.4.2"
   resolved "https://registry.yarnpkg.com/react/-/react-16.4.2.tgz#2cd90154e3a9d9dd8da2991149fdca3c260e129f"
@@ -6556,6 +6562,10 @@ text-table@0.2.0, text-table@~0.2.0:
 throat@^3.0.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/throat/-/throat-3.2.0.tgz#50cb0670edbc40237b9e347d7e1f88e4620af836"
+
+throttle-debounce@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-2.0.1.tgz#7307ddd6cd9acadb349132fbf6c18d78c88a5e62"
 
 through@^2.3.6:
   version "2.3.8"

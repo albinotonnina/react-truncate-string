@@ -6,7 +6,8 @@
   "dependencies": {
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-scripts": "1.1.5"
+    "react-scripts": "1.1.5",
+    "react-truncate-string": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

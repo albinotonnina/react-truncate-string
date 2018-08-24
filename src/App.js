@@ -1,16 +1,30 @@
 import React, { Component } from "react";
+import TruncateString from "react-truncate-string";
 import logo from "./logo.svg";
 import "./App.css";
+
+const string1 =
+  "This is a long long long long long long long string that ends here";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">Hello</p>
+        <div className="container containerA">
+          <TruncateString text={string1} />
+        </div>
+        <div className="container containerB">
+          <TruncateString text={string1} />
+        </div>
+        <div className="container containerC">
+          <TruncateString text={string1} />
+        </div>
+        <div className="container containerD">
+          <TruncateString text={string1} />
+        </div>
+        <div className="container containerE">
+          <TruncateString text={string1} />
+        </div>
       </div>
     );
   }
