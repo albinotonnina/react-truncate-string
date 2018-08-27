@@ -43,6 +43,5 @@ module.exports = {
   port: 1111,
   renderOptions: {
     viewport: {deviceScaleFactor: 2}
-  },
-  useDocker: false
+  }
 }

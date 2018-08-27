@@ -2,55 +2,69 @@ import React, {PureComponent} from 'react'
 import {debounce} from 'throttle-debounce'
 import PropTypes from 'prop-types'
 
+export const truncateText = ({text, ellipsisString, measurements}) => {
+  if (measurements.text > measurements.component) {
+    const half = measurements.component / 2 - measurements.ellipsis * 2
+    const portion = Math.ceil((text.length * half) / measurements.text)
+    const left = text.slice(0, portion)
+    const right = text.slice(text.length - portion, text.length)
+
+    return `${left}${ellipsisString}${right}`
+  } else {
+    return text
+  }
+}
+
 class TruncateString extends PureComponent {
   static propTypes = {
-    ellipsis: PropTypes.string,
+    ellipsisString: PropTypes.string,
     text: PropTypes.string
   }
 
   static defaultProps = {
-    ellipsis: '...',
+    ellipsisString: '...',
     text: ''
   }
 
   state = {
+    truncating: true,
     truncatedText: null
   }
 
-  parseTextForTruncation(text) {
+  setTruncateString(text) {
     const measurements = {
       component: this.componentRef.offsetWidth,
       ellipsis: this.ellipsisRef.offsetWidth,
       text: this.textRef.offsetWidth
     }
 
-    const truncatedText =
-      measurements.text > measurements.component
-        ? this.truncateTextCenter(measurements)
-        : text
+    const {ellipsisString} = this.props
 
-    this.setState({truncatedText})
-  }
+    const truncatedText = truncateText({measurements, text, ellipsisString})
 
-  truncateTextCenter(measurements) {
-    const {text, ellipsis} = this.props
-
-    const half = measurements.component / 2 - measurements.ellipsis * 2
-    const portion = Math.ceil((text.length * half) / measurements.text)
-    const left = text.slice(0, portion)
-    const right = text.slice(text.length - portion, text.length)
-
-    return `${left}${ellipsis}${right}`
+    this.setState({truncatedText, truncating: false})
   }
 
   resetTruncate = debounce(50, () => {
-    this.setState({truncatedText: false})
-    this.parseTextForTruncation(this.props.text)
+    // this renders the original string so we can measure it
+    this.setState({truncating: true}, () =>
+      this.setTruncateString(this.props.text)
+    )
   })
 
   componentDidMount() {
-    this.parseTextForTruncation(this.props.text)
+    this.setTruncateString(this.props.text)
     window.addEventListener('resize', this.resetTruncate)
+  }
+
+  componentDidUpdate = (_, prevState) => {
+    /*
+    Yes, we are using an anti-pattern here. 
+    We want to render two times:
+      one to display and measure the input string 
+      one to display the truncated
+    */
+    this.state.truncating === prevState.truncating && this.resetTruncate()
   }
 
   componentWillUnmount() {
@@ -70,8 +84,8 @@ class TruncateString extends PureComponent {
   }
 
   render() {
-    const {text, ellipsis, style, ...otherProps} = this.props
-    const {truncatedText} = this.state
+    const {text, ellipsisString, style, ...otherProps} = this.props
+    const {truncatedText, truncating} = this.state
 
     const componentStyle = {
       ...style,
@@ -82,9 +96,9 @@ class TruncateString extends PureComponent {
 
     return (
       <div ref={this.setComponentRef} style={componentStyle} {...otherProps}>
-        {!truncatedText && <span ref={this.setTextRef}>{text}</span>}
-        {!truncatedText && <span ref={this.setEllipsisRef}>{ellipsis}</span>}
-        {truncatedText}
+        {truncating && <span ref={this.setTextRef}>{text}</span>}
+        {truncating && <span ref={this.setEllipsisRef}>{ellipsisString}</span>}
+        {!truncating && truncatedText}
       </div>
     )
   }
