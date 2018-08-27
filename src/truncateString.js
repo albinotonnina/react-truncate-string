@@ -2,19 +2,24 @@ import React, {PureComponent} from 'react'
 import {debounce} from 'throttle-debounce'
 import PropTypes from 'prop-types'
 
-export const truncateString = ({text, ellipsisString, measurements}) => {
+export const truncateString = ({
+  text,
+  ellipsisString,
+  measurements,
+  leftPercentage = 50
+}) => {
   if (measurements.text > measurements.component) {
-    const leftPercentage = 50
+    const size = percentage => measurements.component * (percentage / 100)
 
-    const size = percentage =>
-      measurements.component * (percentage / 100) - measurements.ellipsis
+    const portion = size => Math.floor((text.length * size) / measurements.text)
 
-    const portion = size => Math.ceil((text.length * size) / measurements.text)
-
-    const left = text.slice(0, portion(size(leftPercentage)))
+    const left = text.slice(
+      0,
+      Math.max(0, portion(size(leftPercentage)) - ellipsisString.length)
+    )
 
     const right = text.slice(
-      text.length - portion(size(100 - leftPercentage)),
+      text.length - portion(size(100 - leftPercentage)) + ellipsisString.length,
       text.length
     )
 
@@ -27,12 +32,14 @@ export const truncateString = ({text, ellipsisString, measurements}) => {
 class TruncateString extends PureComponent {
   static propTypes = {
     ellipsisString: PropTypes.string,
+    truncateAt: PropTypes.number,
     text: PropTypes.string
   }
 
   static defaultProps = {
     ellipsisString: '...',
-    text: ''
+    text: '',
+    truncateAt: 50
   }
 
   state = {
@@ -49,7 +56,12 @@ class TruncateString extends PureComponent {
 
     const {ellipsisString} = this.props
 
-    return truncateString({measurements, text, ellipsisString})
+    return truncateString({
+      measurements,
+      text,
+      ellipsisString,
+      leftPercentage: this.props.truncateAt
+    })
   }
 
   resetTruncate = debounce(50, () => {
@@ -96,7 +108,7 @@ class TruncateString extends PureComponent {
   }
 
   render() {
-    const {text, ellipsisString, style, ...otherProps} = this.props
+    const {text, ellipsisString, truncateAt, style, ...otherProps} = this.props
     const {truncatedString, truncating} = this.state
 
     const componentStyle = {

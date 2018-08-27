@@ -13,7 +13,7 @@ describe('truncateText Unit', () => {
       ellipsisString: '...'
     }
 
-    expect(truncateString(parameters)).toEqual('my str...s here')
+    expect(truncateString(parameters)).toEqual('my ...ere')
   })
 
   it('should not truncate ', () => {
