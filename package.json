@@ -62,7 +62,7 @@
     "html-webpack-plugin": "^3.2.0",
     "jest": "^22.4.3",
     "jest-enzyme": "^6.0.3",
-    "jest-puppeteer-react": "file:../jest-puppeteer-react",
+    "jest-puppeteer-react": "^1.4.0",
     "prop-types": "^15.6.1",
     "puppeteer": "^1.7.0",
     "react": "^16.2.0",

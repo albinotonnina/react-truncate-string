@@ -27,10 +27,11 @@ class TruncateString extends PureComponent {
   }
 
   state = {
+    truncating: true,
     truncatedText: null
   }
 
-  parseTextForTruncation(text) {
+  setTruncateString(text) {
     const measurements = {
       component: this.componentRef.offsetWidth,
       ellipsis: this.ellipsisRef.offsetWidth,
@@ -41,17 +42,29 @@ class TruncateString extends PureComponent {
 
     const truncatedText = truncateText({measurements, text, ellipsisString})
 
-    this.setState({truncatedText})
+    this.setState({truncatedText, truncating: false})
   }
 
   resetTruncate = debounce(50, () => {
-    this.setState({truncatedText: false})
-    this.parseTextForTruncation(this.props.text)
+    // this renders the original string so we can measure it
+    this.setState({truncating: true}, () =>
+      this.setTruncateString(this.props.text)
+    )
   })
 
   componentDidMount() {
-    this.parseTextForTruncation(this.props.text)
+    this.setTruncateString(this.props.text)
     window.addEventListener('resize', this.resetTruncate)
+  }
+
+  componentDidUpdate = (_, prevState) => {
+    /*
+    Yes, we are using an anti-pattern here. 
+    We want to render two times:
+      one to display and measure the input string 
+      one to display the truncated
+    */
+    this.state.truncating === prevState.truncating && this.resetTruncate()
   }
 
   componentWillUnmount() {
@@ -72,7 +85,7 @@ class TruncateString extends PureComponent {
 
   render() {
     const {text, ellipsisString, style, ...otherProps} = this.props
-    const {truncatedText} = this.state
+    const {truncatedText, truncating} = this.state
 
     const componentStyle = {
       ...style,
@@ -83,11 +96,9 @@ class TruncateString extends PureComponent {
 
     return (
       <div ref={this.setComponentRef} style={componentStyle} {...otherProps}>
-        {!truncatedText && <span ref={this.setTextRef}>{text}</span>}
-        {!truncatedText && (
-          <span ref={this.setEllipsisRef}>{ellipsisString}</span>
-        )}
-        {truncatedText}
+        {truncating && <span ref={this.setTextRef}>{text}</span>}
+        {truncating && <span ref={this.setEllipsisRef}>{ellipsisString}</span>}
+        {!truncating && truncatedText}
       </div>
     )
   }
