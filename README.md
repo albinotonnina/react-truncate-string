@@ -12,6 +12,8 @@
 
 ### It truncates long long long long...long long strings in the middle!
 
+## demo: https://albinotonnina.github.io/react-truncate-string
+
 🚀 ultra-blazingly-fast
 
 🌈 ultra-light: 1.76 KB
