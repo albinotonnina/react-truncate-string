@@ -49,6 +49,18 @@ render(){
 }
 ```
 
+### Truncate the string at 90%
+
+```jsx
+import Truncate from 'react-truncate-string'
+
+...
+
+render(){
+    return  <TruncateString text="your long string" truncate={90} />
+}
+```
+
 ## Demos
 
 https://albinotonnina.github.io/react-truncate-string
