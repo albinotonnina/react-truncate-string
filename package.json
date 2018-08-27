@@ -62,8 +62,7 @@
     "html-webpack-plugin": "^3.2.0",
     "jest": "^22.4.3",
     "jest-enzyme": "^6.0.3",
-    "jest-puppeteer": "^3.3.1",
-    "jest-puppeteer-react": "^1.4.0",
+    "jest-puppeteer-react": "file:../jest-puppeteer-react",
     "prop-types": "^15.6.1",
     "puppeteer": "^1.7.0",
     "react": "^16.2.0",
@@ -78,9 +77,6 @@
     "webpack": "^4.17.1"
   },
   "jest": {
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test-lib/mocks/fileMock.js"
-    },
     "setupTestFrameworkScriptFile": "<rootDir>/test-lib/setup/setup-test-framework.js",
     "setupFiles": [
       "<rootDir>/test-lib/setup/enzyme.js"

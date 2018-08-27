@@ -2,14 +2,27 @@ import React, {PureComponent} from 'react'
 import {debounce} from 'throttle-debounce'
 import PropTypes from 'prop-types'
 
+export const truncateText = ({text, ellipsisString, measurements}) => {
+  if (measurements.text > measurements.component) {
+    const half = measurements.component / 2 - measurements.ellipsis * 2
+    const portion = Math.ceil((text.length * half) / measurements.text)
+    const left = text.slice(0, portion)
+    const right = text.slice(text.length - portion, text.length)
+
+    return `${left}${ellipsisString}${right}`
+  } else {
+    return text
+  }
+}
+
 class TruncateString extends PureComponent {
   static propTypes = {
-    ellipsis: PropTypes.string,
+    ellipsisString: PropTypes.string,
     text: PropTypes.string
   }
 
   static defaultProps = {
-    ellipsis: '...',
+    ellipsisString: '...',
     text: ''
   }
 
@@ -24,23 +37,11 @@ class TruncateString extends PureComponent {
       text: this.textRef.offsetWidth
     }
 
-    const truncatedText =
-      measurements.text > measurements.component
-        ? this.truncateTextCenter(measurements)
-        : text
+    const {ellipsisString} = this.props
+
+    const truncatedText = truncateText({measurements, text, ellipsisString})
 
     this.setState({truncatedText})
-  }
-
-  truncateTextCenter(measurements) {
-    const {text, ellipsis} = this.props
-
-    const half = measurements.component / 2 - measurements.ellipsis * 2
-    const portion = Math.ceil((text.length * half) / measurements.text)
-    const left = text.slice(0, portion)
-    const right = text.slice(text.length - portion, text.length)
-
-    return `${left}${ellipsis}${right}`
   }
 
   resetTruncate = debounce(50, () => {
@@ -70,7 +71,7 @@ class TruncateString extends PureComponent {
   }
 
   render() {
-    const {text, ellipsis, style, ...otherProps} = this.props
+    const {text, ellipsisString, style, ...otherProps} = this.props
     const {truncatedText} = this.state
 
     const componentStyle = {
@@ -83,7 +84,9 @@ class TruncateString extends PureComponent {
     return (
       <div ref={this.setComponentRef} style={componentStyle} {...otherProps}>
         {!truncatedText && <span ref={this.setTextRef}>{text}</span>}
-        {!truncatedText && <span ref={this.setEllipsisRef}>{ellipsis}</span>}
+        {!truncatedText && (
+          <span ref={this.setEllipsisRef}>{ellipsisString}</span>
+        )}
         {truncatedText}
       </div>
     )
