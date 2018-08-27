@@ -4,10 +4,19 @@ import PropTypes from 'prop-types'
 
 export const truncateString = ({text, ellipsisString, measurements}) => {
   if (measurements.text > measurements.component) {
-    const half = measurements.component / 2 - measurements.ellipsis * 2
-    const portion = Math.ceil((text.length * half) / measurements.text)
-    const left = text.slice(0, portion)
-    const right = text.slice(text.length - portion, text.length)
+    const leftPercentage = 50
+
+    const size = percentage =>
+      measurements.component * (percentage / 100) - measurements.ellipsis
+
+    const portion = size => Math.ceil((text.length * size) / measurements.text)
+
+    const left = text.slice(0, portion(size(leftPercentage)))
+
+    const right = text.slice(
+      text.length - portion(size(100 - leftPercentage)),
+      text.length
+    )
 
     return `${left}${ellipsisString}${right}`
   } else {
