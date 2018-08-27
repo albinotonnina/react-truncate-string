@@ -1,6 +1,6 @@
 {
   "name": "react-truncate-string",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "",
   "main": "dist/truncateString.js",
   "source": "src/truncateString.js",
