@@ -23,7 +23,7 @@ describe('TruncateString', () => {
       expect(screenshot).toMatchImageSnapshot()
     }
 
-    await expect(page).toMatch('test long l...long string')
+    await expect(page).toMatch('test long lon...g long string')
   })
 
   test('should not truncate the string', async () => {
@@ -48,7 +48,7 @@ describe('TruncateString', () => {
     await resizeWindow(100, 100)
     await page.waitFor(10)
 
-    await expect(page).toMatch('test...ring')
+    await expect(page).toMatch('test s...string')
 
     if (!isCI) {
       const screenshot = await page.screenshot()
@@ -76,7 +76,7 @@ describe('TruncateString', () => {
 
     await page.waitFor(200)
 
-    await expect(page).toMatch('test qui...t string')
+    await expect(page).toMatch('test quite...ent string')
 
     if (!isCI) {
       const screenshot = await page.screenshot()
