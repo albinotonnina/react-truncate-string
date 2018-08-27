@@ -18,11 +18,6 @@ describe('TruncateString', () => {
 
     await page.waitFor(10)
 
-    // const truncatedText = await page.$eval(
-    //   '#main > div',
-    //   node => node.innerText
-    // )
-
     if (!isCI) {
       const screenshot = await page.screenshot()
       expect(screenshot).toMatchImageSnapshot()
@@ -50,9 +45,7 @@ describe('TruncateString', () => {
     })
 
     await page.waitFor(10)
-
     await resizeWindow(100, 100)
-
     await page.waitFor(10)
 
     await expect(page).toMatch('test...ring')
@@ -64,7 +57,7 @@ describe('TruncateString', () => {
   })
 
   test('should work with update', async () => {
-    class Compo extends React.Component {
+    class CompoThatChangesProps extends React.Component {
       state = {text: 'test fairly average string'}
       componentDidMount = () => {
         setTimeout(() => {
@@ -77,17 +70,11 @@ describe('TruncateString', () => {
       }
     }
 
-    await render(<Compo />, {
+    await render(<CompoThatChangesProps />, {
       viewport: {width: 150, height: 100}
     })
 
     await page.waitFor(200)
-
-    // const screenshot = await page.screenshot()
-
-    // await expect(screenshot).toMatchImageSnapshot()
-
-    // await page.waitFor(30000)
 
     await expect(page).toMatch('test qui...t string')
 

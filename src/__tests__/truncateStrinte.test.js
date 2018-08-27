@@ -1,5 +1,5 @@
 // import React from 'react'
-import {truncateText} from '../truncateString'
+import {truncateString} from '../truncateString'
 
 describe('truncateText Unit', () => {
   it('should truncate right in the middle', () => {
@@ -13,7 +13,7 @@ describe('truncateText Unit', () => {
       ellipsisString: '...'
     }
 
-    expect(truncateText(parameters)).toEqual('my s...here')
+    expect(truncateString(parameters)).toEqual('my s...here')
   })
 
   it('should not truncate ', () => {
@@ -27,6 +27,6 @@ describe('truncateText Unit', () => {
       ellipsisString: '...'
     }
 
-    expect(truncateText(parameters)).toEqual('my string ends here')
+    expect(truncateString(parameters)).toEqual('my string ends here')
   })
 })
