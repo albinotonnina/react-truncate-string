@@ -39,7 +39,7 @@ yarn add react-truncate-string
 ### Truncate in the middle of the string
 
 ```jsx
-import Truncate from 'react-truncate-string'
+import TruncateString from 'react-truncate-string'
 
 ...
 
@@ -52,7 +52,7 @@ render(){
 ### Truncate the string at 90%
 
 ```jsx
-import Truncate from 'react-truncate-string'
+import TruncateString from 'react-truncate-string'
 
 ...
 
