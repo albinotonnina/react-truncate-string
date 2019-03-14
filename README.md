@@ -57,7 +57,7 @@ import TruncateString from 'react-truncate-string'
 ...
 
 render(){
-    return  <TruncateString text="your long string" truncate={90} />
+    return  <TruncateString text="your long string" truncateAt={90} />
 }
 ```
 
