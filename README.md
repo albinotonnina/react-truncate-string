@@ -10,7 +10,7 @@
 
 ## Features
 
-### It truncates long long long long...long long strings in the middle!
+### It truncates long long long long&#8230;long long strings in the middle!
 
 ## Requirements
 

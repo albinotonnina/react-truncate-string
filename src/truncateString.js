@@ -37,7 +37,7 @@ class TruncateString extends PureComponent {
   }
 
   static defaultProps = {
-    ellipsisString: '...',
+    ellipsisString: '\u2026',
     text: '',
     truncateAt: 50
   }
