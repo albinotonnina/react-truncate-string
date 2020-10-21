@@ -10,10 +10,10 @@ describe('truncateText Unit', () => {
         component: 20
       },
       text: 'my string ends here',
-      ellipsisString: '...'
+      ellipsisString: '\u2026'
     }
 
-    expect(truncateString(parameters)).toEqual('my ...ere')
+    expect(truncateString(parameters)).toEqual('my st\u2026 here')
   })
 
   it('should not truncate ', () => {
@@ -24,7 +24,7 @@ describe('truncateText Unit', () => {
         component: 40
       },
       text: 'my string ends here',
-      ellipsisString: '...'
+      ellipsisString: '\u2026'
     }
 
     expect(truncateString(parameters)).toEqual('my string ends here')
