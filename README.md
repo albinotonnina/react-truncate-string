@@ -12,6 +12,10 @@
 
 ### It truncates long long long long...long long strings in the middle!
 
+## Requirements
+
+This library relies on spaces for truncation. Thanks [@dschinkel](https://github.com/dschinkel) for [pointing that out](https://github.com/albinotonnina/react-truncate-string/issues/7).
+
 ## demo: https://albinotonnina.github.io/react-truncate-string
 
 🚀 ultra-blazingly-fast
@@ -83,4 +87,4 @@ PRs accepted.
 
 ## License
 
-MIT © 2018 Albino Tonnina
+MIT © 2020 Albino Tonnina
