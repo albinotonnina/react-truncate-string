@@ -66,11 +66,13 @@ class TruncateString extends PureComponent {
 
   resetTruncate = debounce(50, () => {
     // this renders the original string so we can measure it
-    this.setState({truncating: true}, () => {
-      // now we render again with the truncated string
-      const truncatedString = this.getTruncateString(this.props.text)
-      this.setState({truncatedString, truncating: false})
-    })
+    if (this._isMounted) {
+      this.setState({truncating: true}, () => {
+        // now we render again with the truncated string
+        const truncatedString = this.getTruncateString(this.props.text)
+        this.setState({truncatedString, truncating: false})
+      })
+    }
   })
 
   componentDidMount() {
@@ -79,6 +81,7 @@ class TruncateString extends PureComponent {
     this.setState({truncatedString, truncating: false})
 
     window.addEventListener('resize', this.resetTruncate)
+    this._isMounted = true
   }
 
   componentDidUpdate = (_, prevState) => {
@@ -92,6 +95,7 @@ class TruncateString extends PureComponent {
   }
 
   componentWillUnmount() {
+    this._isMounted = false
     window.removeEventListener('resize', this.resetTruncate)
   }
 
